@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <include
+        layout="@layout/app_bar_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/appBlue"
+
+        >
+
+        <ImageView
+            android:id="@+id/img_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_back" />
+
+
+        <ImageView
+            android:id="@+id/img_user_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jems"
+        android:layout_toEndOf="@+id/img_user_image"
+        android:layout_toRightOf="@+id/img_user_image"
+        android:layout_marginTop="70dp"
+        android:textColor="@color/colorWhite"
+        />
+
+        <TextView
+            android:id="@+id/user_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="jems@gmail.com"
+            android:layout_toEndOf="@+id/img_user_image"
+            android:layout_toRightOf="@+id/img_user_image"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/colorWhite"
+            android:layout_below="@+id/user_name"
+            android:textSize="11sp"
+
+            />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="100dp"
+            android:layout_height="28dp"
+            android:text="Logout"
+            android:layout_toEndOf="@+id/img_user_image"
+            android:layout_toRightOf="@+id/img_user_image"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorBlack"
+            android:layout_below="@id/user_email"
+            android:textSize="11sp"
+
+            android:background="@drawable/signindrawable"
+            android:textAllCaps="false"
+            />
+        <View
+            android:layout_below="@+id/img_user_image"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/sepratorColor"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/seprator"
+            />
+
+
+        <android.support.v7.widget.RecyclerView
+
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/seprator"
+            android:id="@+id/rv_nav_item_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            />
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

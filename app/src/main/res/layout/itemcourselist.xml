@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardUseCompatPadding="true"
+    android:background="#00000000"
+    card_view:elevation="4dp">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/itemcoursesbackground"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/coursename"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Behavioral integration of the basic presupossitions of NLP:"
+            android:textColor="@color/textBlack"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorBlack" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+
+            >
+
+            <TextView
+                android:id="@+id/startlecture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/startlecture"
+                android:gravity="center"
+                android:text="Start Lecture"
+                android:textSize="11sp" />
+
+
+            <LinearLayout
+                android:id="@+id/layout_allowed"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="right"
+                android:visibility="gone"
+                android:background="@drawable/layout_allowed">
+
+                <TextView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:background="@drawable/bg_circle"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_not_allowed"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="left"
+                android:backgroundTint="#929292"
+                android:background="@drawable/layout_allowed">
+
+                <TextView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:background="@drawable/bg_circle"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    />
+            </LinearLayout>
+
+            <!--<com.github.glomadrian.materialanimatedswitch.MaterialAnimatedSwitch
+                android:id="@+id/switch_allowed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:base_release_color="#979797"
+                app:base_press_color="#012060"
+                app:ball_release_color="#ffffff"
+                app:ball_press_color="#ffffff"
+
+                app:icon_release="@null"
+                app:icon_press="@null"
+                android:layout_alignParentRight="true"
+                />-->
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

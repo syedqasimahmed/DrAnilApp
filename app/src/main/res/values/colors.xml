@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--app colors-->
+    <color name="appBlue">#002060</color>
+    <color name="textWhite">#fff</color>
+    <color name="textBlack">#000</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorgrey">#767676</color>
+
+    <color name="colorCream">#e3b64c</color>
+    <color name="logoutGreen">#E1B957</color>
+    <color name="logoutDarkGreen">#FF8F7025</color>
+
+    <color name="sepratorColor">#E2E2E2</color>
+
+</resources>
