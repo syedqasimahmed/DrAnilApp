@@ -3,6 +3,7 @@ package mmcom.ui.dranil.fragment
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -23,39 +24,25 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class ViewAllCoursesFragment : Fragment(), View.OnClickListener {
+class ViewAllCoursesFragment : Fragment() {
 
-    var list: ArrayList<CourseModel>? = null
+
     var adapter: AdapterCourse? = null
     var rv: RecyclerView? = null
-    var btn_viewcompanyadd: Button? = null
 
-    var onClickListener: MyAdapterListener? = null
-
-    interface MyAdapterListener {
-
-        fun iconTextViewOnClick(v: View, position: Int)
-    }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         var rootView = inflater.inflate(R.layout.fragment_viewallcourses, container, false)
-
-
         rv = rootView.findViewById(R.id.rvcourse);
-
         get_data();
-
-
         return rootView
 
     }
 
-    override fun onClick(v: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
 
     override fun onResume() {
         super.onResume()
@@ -79,6 +66,12 @@ class ViewAllCoursesFragment : Fragment(), View.OnClickListener {
                             adapter = AdapterCourse(activity, coursesResponse.data, object : AdapterCourse.MyAdapterListener {
                                 override fun onStartLectureListner(v: View?, position: Int) {
 
+                                    val courseDetailFragment = CourseDetailFragment()
+                                    var args = Bundle()
+                                    args.putString("url",coursesResponse.data[position].lectureFile)
+                                    args.putString("filename",coursesResponse.data[position].lectureId)
+                                    courseDetailFragment.arguments = args
+                                    replaceFragment(courseDetailFragment)
                                 }
 
                                 override fun onSwicthClickListner(v: View?, position: Int, isAllowed: Boolean) {
@@ -123,6 +116,31 @@ class ViewAllCoursesFragment : Fragment(), View.OnClickListener {
     fun showMessage(message: String) {
         if (et_email != null)
             Snackbar.make(et_email, message, Snackbar.LENGTH_LONG).show()
+    }
+
+
+    fun replaceFragment(fragment: Fragment) {
+        val backStateName = fragment.javaClass.name
+
+
+        val manager = activity?.supportFragmentManager
+        var fragmentPopped = false
+        try {
+
+            fragmentPopped = manager?.popBackStackImmediate(backStateName, 0)!!
+
+        } catch (ignored: IllegalStateException) {
+            // There's no way to avoid getting this if saveInstanceState has already been called.
+        }
+
+        if (!fragmentPopped && manager?.findFragmentByTag(backStateName) == null) { //fragment not in back stack, create it.
+            val ft = manager?.beginTransaction()
+            ft?.replace(R.id.fragment_container, fragment, backStateName)
+            ft?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            ft?.addToBackStack(backStateName)
+            ft?.commitAllowingStateLoss()
+        }
+
     }
 
 }

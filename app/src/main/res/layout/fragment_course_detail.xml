@@ -1,39 +1,54 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/colorWhite"
     tools:context="mmcom.ui.dranil.fragment.CourseDetailFragment">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/img_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:textSize="18dp"
+        android:text="My courses"
+        android:drawableTint="@color/colorBlack"
+        android:drawableLeft="@drawable/ic_back"
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#000"
-            android:src="@drawable/ic_notification" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:text="My Courses"
-            android:textColor="@color/logoutGreen" />
-    </LinearLayout>
+        android:textStyle="bold"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textColor="@color/colorCream"/>
 
     <com.github.lzyzsd.circleprogress.DonutProgress
         android:id="@+id/donut_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+         android:layout_centerInParent="true"
         android:layout_marginLeft="50dp"
-        custom:donut_progress="30" />
+        custom:donut_progress="0" />
+    <com.github.barteksc.pdfviewer.PDFView
+        android:visibility="gone"
+        android:layout_above="@+id/tv_take_exam"
+        android:layout_below="@+id/img_back"
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_take_exam"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:text="Take Exam"
+        android:textColor="@color/colorBlack"
+        android:background="@drawable/signindrawable"
+        />
+</RelativeLayout>

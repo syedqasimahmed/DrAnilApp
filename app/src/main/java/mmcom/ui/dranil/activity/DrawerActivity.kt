@@ -151,7 +151,7 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
 
-    private fun replaceFragment(fragment: Fragment) {
+      fun replaceFragment(fragment: Fragment) {
         val backStateName = fragment.javaClass.name
 
 
