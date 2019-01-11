@@ -32,6 +32,15 @@ class CourseDetailFragment : Fragment() {
             replaceFragment(ViewAllCoursesFragment())
         }
 
+        showPDF()
+        tv_take_exam.setOnClickListener {
+            // todo Open Take Exam Fragment here
+        }
+
+
+    }
+
+    fun showPDF() {
         if (arguments != null) {
             downloadURL = arguments?.getString("url")
             downloadFileName = arguments?.getString("filename")
@@ -83,7 +92,6 @@ class CourseDetailFragment : Fragment() {
 
         })
         pdfTask.execute()
-
     }
 
     fun replaceFragment(fragment: Fragment) {

@@ -48,6 +48,7 @@
         android:layout_alignParentBottom="true"
         android:textStyle="bold"
         android:text="Take Exam"
+        android:clickable="true"
         android:textColor="@color/colorBlack"
         android:background="@drawable/signindrawable"
         />
