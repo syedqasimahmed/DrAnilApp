@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.github.barteksc.pdfviewer.util.FitPolicy
 import kotlinx.android.synthetic.main.fragment_course_detail.*
 import mmcom.ui.dranil.R
 import mmcom.ui.dranil.backgroundtask.DownloadPDFTask
@@ -35,6 +36,7 @@ class CourseDetailFragment : Fragment() {
         showPDF()
         tv_take_exam.setOnClickListener {
             // todo Open Take Exam Fragment here
+            replaceFragment(ExamFragment())
         }
 
 
@@ -49,6 +51,8 @@ class CourseDetailFragment : Fragment() {
         var pdfTask = DownloadPDFTask(activity, downloadURL, downloadFileName)
         pdfTask.setOnUpdateListner(object : DownloadPDFTask.OnUpdateListner {
             override fun onFileAlreadyExists(file: File?) {
+                if(!this@CourseDetailFragment.isResumed)
+                 return
                 donut_progress.visibility = View.GONE
                 pdfView.visibility = View.VISIBLE
                 pdfView.fromFile(file)
@@ -65,15 +69,21 @@ class CourseDetailFragment : Fragment() {
             }
 
             override fun onError(filename: String?) {
+                if(!this@CourseDetailFragment.isResumed)
+                    return
                 donut_progress.visibility = View.GONE
 
             }
 
             override fun onUpdate(progress: Int) {
+                if(!this@CourseDetailFragment.isResumed)
+                    return
                 donut_progress.setDonut_progress(progress.toString())
             }
 
             override fun onDownloadSuccsesFull(file: File?) {
+                if(!this@CourseDetailFragment.isResumed)
+                    return
                 donut_progress.visibility = View.GONE
                 pdfView.visibility = View.VISIBLE
                 pdfView.fromFile(file)
@@ -81,7 +91,7 @@ class CourseDetailFragment : Fragment() {
                         .swipeHorizontal(false)
                         .enableDoubletap(true)
                         .defaultPage(0)
-                        .enableAnnotationRendering(false)
+                        .enableAnnotationRendering(false).pageFitPolicy(FitPolicy.WIDTH)
                         .password(null)
                         .scrollHandle(null)
                         .enableAntialiasing(true)
